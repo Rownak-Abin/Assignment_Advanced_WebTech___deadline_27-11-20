@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<form method="post" action="/customer/filterSearchDone">
+<fieldset style="position: relative; font-size: 22px; top:50px; left:100px; width:700px">
+		<legend>Select Component:</legend> 
+		
+		 <div>
+
+                  <input type="radio" name="comp" value="Storage" checked="checked" > Storage<br>
+                  <input type="radio" name="comp" value="Monitor" > Monitor<br>
+                 
+                              
+                  </div>
+</fieldset>
+
+<fieldset style="position: relative; font-size: 22px; top:110px; left:100px; width:700px">
+		<legend>Select Price Range:</legend> 
+		
+		 <div>
+
+                  <input type="radio" name="range" value=2000 checked="checked" > <=2000<br>
+                              <input type="radio" name="range" value=10000 > <=10000<br>
+                              <input type="radio" name="range" value=100000 > <=100000<br>
+                            
+                              
+                  </div>
+</fieldset>
+
+<input type="submit" style="position: relative; top:200px; left:100px" value="Search">
+
+
+
+	</form>
+	
+</body>
+</html>

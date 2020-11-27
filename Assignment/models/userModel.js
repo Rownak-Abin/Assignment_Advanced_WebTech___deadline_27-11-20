@@ -30,7 +30,7 @@ module.exports= {
 	},
 
 	insertComponent: function(newUser, callback){
-		var sql= "INSERT INTO components (Cname,Pname,Bname,category,subcategory,review,price) VALUES ('"+newUser.Cname+"','"+newUser.Bname+"','"+newUser.Bname+"', '"+newUser.category+"','"+newUser.subcategory+"','"+newUser.review+"','"+newUser.price+"')";
+		var sql= "INSERT INTO components (Cname,Pname,Bname,category,subcategory,review,price) VALUES ('"+newUser.Cname+"','"+newUser.Pname+"','"+newUser.Bname+"', '"+newUser.category+"','"+newUser.subcategory+"','"+newUser.review+"','"+newUser.price+"')";
 		db.execute(sql, function(results){
 			if(results.length >0 ){
 				callback(true);
@@ -54,10 +54,53 @@ module.exports= {
 	},
 
 
+getAll: function(Sbc, callback){
+		var sql = "select * from components where Cname='"+Sbc+"'";
+		db.getResults(sql, function(results){
+			callback(results);
+		});
+	},
+
+
+	search: function(key, callback){
+		var sql = "SELECT * FROM components WHERE Pname LIKE '"+key+"%' ";
+		console.log(sql);
+		db.getResults(sql, function(results){
+
+			console.log("dataset length "+results.length);
+			if(results.length > 0){
+				callback(results);
+			}else{
+				callback(false);
+			}
+		});
+	},
+
+
+	getByIdsearch: function(Sid, callback){
+
+		var sql = "select * from components where id='"+Sid+"'";
+		db.getResults(sql, function(results){
+			
+				callback(results);
+		});
 
 
 
+	},
 
+
+	filterSearch: function(Sid, range, callback){
+
+		var sql = "select * from components where Cname='"+Sid+"' and price <="+range+"";
+		db.getResults(sql, function(results){
+			
+				callback(results);
+		});
+
+
+
+	},
 
 
 

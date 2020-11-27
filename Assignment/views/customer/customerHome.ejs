@@ -33,11 +33,11 @@
 <nav class="navbar navbar-inverse ">
   <div class="container-fluid mr-auto">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">APWT(AIUB)</a>
+     <h1 style="color:orange; position:relative; top:-100px">Home</h1>
     </div>
     <ul class="nav navbar-nav navbar-center">
      
-      <li class="dropdown btn btn-primary"><a style="color: #fff;" href="#">STORAGE</a>
+      <li class="dropdown btn btn-primary"><a style="color: #fff;" href="/customer/allstorage">STORAGE</a>
         <div class="dropdown-content">
     <a href="/customer/permanentSto">Permanent Storage</a>
     <a href="/customer/portableSto">Portable Storage</a>
@@ -46,29 +46,72 @@
       </li>
 
        </li>
-      <li class="dropdown btn btn-danger" ><a style="color: #fff;" href="#">MONITOR</a>
+      <li class="dropdown btn btn-danger" ><a style="color: #fff;" href="/customer/allmonitor">MONITOR</a>
         <div class="dropdown-content">
-    <a href="#">LCD Flat</a>
-    <a href="#">LED Flat</a>
+    <a href="/customer/LCDmon">LCD Flat</a>
+    
     <a href="#">Giant Flat</a>
     
   </div>
       </li>
     </ul>
 
+    <a class="dropdown btn btn-success" style="position: relative; top:200px; left:540px" href="/customer/filter">Filter Search</a>
+
+
     <form class="navbar-form navbar-right" action="/action_page.php">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search" name="search">
+      <div class="form-group" style="position: relative; left:0px">
+        <br><input type="text" class="form-control" placeholder="Search Any product" id="search">
       </div>
-      <button type="submit" class="btn btn-default">Submit</button>
+
+      <div id="info" style="position: relative; width:400px; height: 200px; background-color: #FAEBD7;"></div>
+      <!-- <button type="submit" class="btn btn-default">Submit</button> -->
     </form>
   </div>
 </nav>
 
 <div class="container">
-  <h3>Navbar Forms</h3>
-  <p>Use the .navbar-form class to vertically align form elements (same padding as links) inside the navbar.</p>
+  <h3>Online Computer Shop</h3>
+  <p>You can search and buy your desired components from our shop</p><br><br>
+<div style="color:red">
+  <h4>For all product list click on the STORAGE or MONITOR button... </h4>
+  <h5>There are also Catrgorized drop-down buttons for you... </h5>
+</div>
 </div>
 
+ <a style="position: relative; left:30px; top:80px" href="home/logout">Logout</a>
+
 </body>
+
+  <script>
+
+           $(document).ready(function(){
+
+                 $('#search').keyup(function(){
+
+
+                  var i = $('#search').val();
+
+                     $.ajax({
+
+                              url: '/customer/products/'+i,
+                              method: 'get',
+                              datatype : 'json',
+                              data : {'name':name},
+                              contentType : "application/x-www-form-urlencoded",
+                              success:function(response){
+                                console.log(response);
+
+                                $('#info').html(response);}
+                              });
+
+
+                 });
+              });
+    
+
+
+     </script>
+
+
 </html>
