@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Product details</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+
+	<form action="">
+
+		<% inf.forEach( function(pro){ %>
+
+		<div style="background-color:#FFEFD5; margin-bottom: 25px; width:900px;padding: 10px ">
+
+		<h2 style="color: red;">Product Name: <%= pro.Pname %></h2>
+
+		<p>Description: <%= pro.review %></p>
+
+		<p>Price: <%= pro.price %></p>
+
+
+
+		</div>
+
+		<%
+			}); 
+		%>
+	</form>
+	
+</body>
+</html>
